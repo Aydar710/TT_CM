@@ -30,8 +30,18 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
 
-        configureWebView()
-        web_view.loadUrl(urls[1])
+        if (savedInstanceState != null){
+            web_view.restoreState(savedInstanceState)
+        }else{
+            configureWebView()
+            web_view.loadUrl(urls[0])
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        web_view.saveState(outState)
     }
 
     private fun configureWebView() {
