@@ -13,17 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <meta-data
-            android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="DISABLE" />
-
-        <activity android:name=".featurepersons.presentation.PersonsActivity"></activity>
-        <activity
-            android:name=".featurewebview.WebViewActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-        <activity android:name=".featuremain.MainActivity" />
-        <activity android:name=".featuresplash.SplashActivity">
+        <activity android:name=".featureauth.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +21,16 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
+        <activity android:name=".featurepersons.presentation.PersonsActivity" />
+        <activity
+            android:name=".featurewebview.WebViewActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity android:name=".featuremain.MainActivity" />
+        <activity android:name=".featuresplash.SplashActivity"></activity>
     </application>
 
 </manifest>

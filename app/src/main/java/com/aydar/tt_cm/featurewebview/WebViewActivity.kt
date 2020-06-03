@@ -34,7 +34,7 @@ class WebViewActivity : AppCompatActivity() {
             web_view.restoreState(savedInstanceState)
         }else{
             configureWebView()
-            web_view.loadUrl(urls[0])
+            web_view.loadUrl(urls[1])
         }
     }
 
