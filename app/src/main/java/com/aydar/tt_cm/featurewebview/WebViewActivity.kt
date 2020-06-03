@@ -12,7 +12,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.aydar.tt_cm.R
-import com.aydar.tt_cm.featurecards.CardsActivity
+import com.aydar.tt_cm.featurepersons.presentation.PersonsActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
 import java.net.MalformedURLException
 import java.net.URL
@@ -72,7 +72,7 @@ class WebViewActivity : AppCompatActivity() {
     }
 
     private fun startCardsActivity() {
-        startActivity(Intent(this, CardsActivity::class.java))
+        startActivity(Intent(this, PersonsActivity::class.java))
     }
 
     inner class JavaScriptInterface {

@@ -1,6 +1,6 @@
-package com.aydar.tt_cm.featurecards.data
+package com.aydar.tt_cm.data
 
-data class Spot(
+data class Person(
     val id: Long = counter++,
     val name: String,
     val city: String,

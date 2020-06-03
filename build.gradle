@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-
+        koin_version = "2.1.5"
         supportVersion = '1.0.0'
         constraintVersion = '1.1.3'
 
@@ -11,6 +11,15 @@ buildscript {
                 recyclerView    : "androidx.recyclerview:recyclerview:$supportVersion",
                 constraintLayout: "androidx.constraintlayout:constraintlayout:$constraintVersion",
                 material        : "com.google.android.material:material:$supportVersion"
+        ]
+
+        koinDeps = [
+                // Koin for Android
+                koinAdnroid  : "org.koin:koin-android:$koin_version",
+                // or Koin for Lifecycle scoping
+                koinScopes   : "org.koin:koin-android-scope:$koin_version",
+                // or Koin for Android Architecture ViewModel
+                koinViewModel: "org.koin:koin-android-viewmodel:$koin_version"
         ]
     }
     ext.kotlin_version = '1.3.61'

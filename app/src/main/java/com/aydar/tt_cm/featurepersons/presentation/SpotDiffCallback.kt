@@ -1,11 +1,11 @@
-package com.aydar.tt_cm.featurecards.presentation
+package com.aydar.tt_cm.featurepersons.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import com.aydar.tt_cm.featurecards.data.Spot
+import com.aydar.tt_cm.data.Person
 
 class SpotDiffCallback(
-    private val old: List<Spot>,
-    private val new: List<Spot>
+    private val old: List<Person>,
+    private val new: List<Person>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
