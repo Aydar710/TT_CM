@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "931610924344",
+    "firebase_url": "https://ttcm-c0df1.firebaseio.com",
+    "project_id": "ttcm-c0df1",
+    "storage_bucket": "ttcm-c0df1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931610924344:android:d7987540f246b7bc3c9dcd",
+        "android_client_info": {
+          "package_name": "com.aydar.tt_cm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931610924344-98u01ae1634l50il9f5fsqmjc8eeqgni.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPNw4LnNwX53m7FnN3SW2Dq_gRiTSl_Ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931610924344-98u01ae1634l50il9f5fsqmjc8eeqgni.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

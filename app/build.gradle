@@ -1,7 +1,22 @@
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.6, 0.99.99]'
+    }
+}
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
 
 android {
     compileSdkVersion 29
@@ -9,18 +24,29 @@ android {
 
     defaultConfig {
         applicationId "com.aydar.tt_cm"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [
+                onesignal_app_id: '0df58091-bb82-4cd1-92a5-dcfe781db686',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
     }
 
     buildTypes {
         release {
+            buildConfigField "String", "APP_METRICA_APP_KEY", "64dd2e2b-f02a-462f-95f0-cf3086a5d93c"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField "String", "APP_METRICA_APP_KEY", '"64dd2e2b-f02a-462f-95f0-cf3086a5d93c"'
         }
     }
 
@@ -32,6 +58,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-messaging:20.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -49,4 +76,11 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     kapt 'com.github.bumptech.glide:compiler:4.10.0'
+
+    implementation 'com.onesignal:OneSignal:[3.13.0, 3.99.99]'
+
+    // AppMetrica SDK.
+    implementation 'com.yandex.android:mobmetricalib:3.13.1'
+    // Play Install Referrer library.
+    implementation 'com.android.installreferrer:installreferrer:1.1.2'
 }
