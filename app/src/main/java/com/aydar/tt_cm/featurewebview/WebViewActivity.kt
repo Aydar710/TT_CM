@@ -10,31 +10,41 @@ import android.webkit.JavascriptInterface
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.aydar.tt_cm.R
+import com.aydar.tt_cm.data.model.User
 import com.aydar.tt_cm.featurepersons.presentation.PersonsActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_web_view.*
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.net.MalformedURLException
 import java.net.URL
 
 
 class WebViewActivity : AppCompatActivity() {
 
+    private val viewModel: WebViewViewModel by viewModel()
+    private var firebaseUser: FirebaseUser? = null
+
     private val urls = listOf(
         "http://178.128.242.32/test",
-        "http://178.128.242.32/test2",
-        "https://www.google.com/"
+        "http://178.128.242.32/test2"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)
 
-        if (savedInstanceState != null){
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+
+        if (savedInstanceState != null) {
             web_view.restoreState(savedInstanceState)
-        }else{
+        } else {
             configureWebView()
-            web_view.loadUrl(urls[1])
+            web_view.loadUrl(urls[0])
         }
     }
 
@@ -81,6 +91,21 @@ class WebViewActivity : AppCompatActivity() {
         web_view.webViewClient = webViewClient
     }
 
+    private fun saveUserLink(url: String) {
+        val user = firebaseUser?.uid?.let { User(it, url) }
+        user?.let { viewModel.saveUser(it) }
+    }
+
+    private fun getUserLink(userHasLink: (String?) -> Unit) {
+        firebaseUser?.uid?.let { viewModel.getUser(it) }
+        viewModel.userLiveData.observe(this, Observer {
+            userHasLink.invoke(it.link)
+        })
+    }
+
+    private fun showHasLinkToast() =
+        Toast.makeText(this, getString(R.string.has_link_already), Toast.LENGTH_SHORT).show()
+
     private fun startCardsActivity() {
         startActivity(Intent(this, PersonsActivity::class.java))
     }
@@ -103,9 +128,17 @@ class WebViewActivity : AppCompatActivity() {
                 url?.let {
                     web_view.post {
                         try {
-                            web_view.loadUrl(url.toString())
+                            getUserLink {
+                                if (!it.isNullOrEmpty()) {
+                                    web_view.loadUrl(it)
+                                    showHasLinkToast()
+                                } else {
+                                    web_view.loadUrl(url.toString())
+                                    saveUserLink(url.toString())
+                                }
+                            }
                         } catch (e: Exception) {
-                            print("")
+                            e.printStackTrace()
                         }
                     }
                 }
@@ -114,6 +147,5 @@ class WebViewActivity : AppCompatActivity() {
             }
         }
     }
-
 }
 

@@ -6,6 +6,9 @@ buildscript {
         supportVersion = '1.0.0'
         constraintVersion = '1.1.3'
 
+        coroutinesPlayServicesVersion = '1.1.1'
+        coroutinesVersion = "1.3.5"
+
         androidDeps = [
                 cardView        : "androidx.cardview:cardview:$supportVersion",
                 recyclerView    : "androidx.recyclerview:recyclerview:$supportVersion",
@@ -20,6 +23,12 @@ buildscript {
                 koinScopes   : "org.koin:koin-android-scope:$koin_version",
                 // or Koin for Android Architecture ViewModel
                 koinViewModel: "org.koin:koin-android-viewmodel:$koin_version"
+        ]
+
+        coroutinesDeps = [
+                playServices      : "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutinesPlayServicesVersion",
+                coroutineLifecycle: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-beta01",
+                coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
         ]
     }
     ext.kotlin_version = '1.3.61'

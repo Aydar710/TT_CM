@@ -4,4 +4,7 @@
     <string name="receive_code">Получить код</string>
     <string name="enter_code">Введите код</string>
     <string name="sign_in">Войти</string>
+    <string name="has_link_already">Уже имеется закрепленная ссылка</string>
+    <string name="privacy_policy">политику конфиденциальности</string>
+    <string name="by_clicking_start">Нажимая START Вы принимаете</string>
 </resources>

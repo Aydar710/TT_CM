@@ -3,6 +3,7 @@ package com.aydar.tt_cm
 import android.app.Application
 import com.aydar.tt_cm.data.di.repositoryModule
 import com.aydar.tt_cm.featurepersons.di.featurePersonsModule
+import com.aydar.tt_cm.featurewebview.di.featureWebViewModule
 import com.onesignal.OneSignal
 import com.yandex.metrica.YandexMetrica
 import com.yandex.metrica.YandexMetricaConfig
@@ -28,7 +29,8 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 repositoryModule,
-                featurePersonsModule
+                featurePersonsModule,
+                featureWebViewModule
             )
         }
     }
