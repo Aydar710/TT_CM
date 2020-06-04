@@ -2,7 +2,6 @@ package com.aydar.tt_cm.data.repository
 
 import com.aydar.tt_cm.data.model.User
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
 
 class UserRepository(private val db: FirebaseFirestore) {
@@ -24,7 +23,7 @@ class UserRepository(private val db: FirebaseFirestore) {
             .get()
             .await()
 
-        val user = userSnapshot.toObject<User>()
+        val user = userSnapshot.toObject(User::class.java)
         return user
     }
 }

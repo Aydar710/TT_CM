@@ -3,7 +3,6 @@ package com.aydar.tt_cm.featurepersons.presentation
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.aydar.tt_cm.R
 import com.aydar.tt_cm.data.Person
@@ -46,9 +45,6 @@ class CardStackAdapter(
                 Glide.with(item_image)
                     .load(person.url)
                     .into(item_image)
-                setOnClickListener { v ->
-                    Toast.makeText(v.context, person.name, Toast.LENGTH_SHORT).show()
-                }
             }
         }
     }

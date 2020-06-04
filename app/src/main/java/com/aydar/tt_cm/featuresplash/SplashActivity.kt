@@ -2,6 +2,7 @@ package com.aydar.tt_cm.featuresplash
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.aydar.tt_cm.R
 import com.aydar.tt_cm.featuremain.MainActivity
@@ -12,10 +13,10 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        startMainActivity()
-        /*Handler().postDelayed({
+        //startMainActivity()
+        Handler().postDelayed({
             startMainActivity()
-        }, 5000)*/
+        }, 5000)
     }
 
     private fun startMainActivity() {

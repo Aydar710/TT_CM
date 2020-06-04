@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aydar.tt_cm.R
-import com.aydar.tt_cm.featuremain.MainActivity
+import com.aydar.tt_cm.featuresplash.SplashActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
@@ -19,8 +19,8 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        if (authHelper.checkIsUserSignedIn()) {
-            startMainActivity()
+        if (authHelper.checkIfUserSignedIn()) {
+            startSplashActivity()
         }
 
         authHelper.onCodeSent = {
@@ -41,7 +41,7 @@ class AuthActivity : AppCompatActivity() {
         }
 
         authHelper.onSignedIn = {
-            startMainActivity()
+            startSplashActivity()
         }
 
 
@@ -89,7 +89,7 @@ class AuthActivity : AppCompatActivity() {
         })
     }
 
-    private fun startMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+    private fun startSplashActivity() {
+        startActivity(Intent(this, SplashActivity::class.java))
     }
 }

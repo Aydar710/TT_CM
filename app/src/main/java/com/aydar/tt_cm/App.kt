@@ -1,6 +1,6 @@
 package com.aydar.tt_cm
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.aydar.tt_cm.data.di.repositoryModule
 import com.aydar.tt_cm.featurepersons.di.featurePersonsModule
 import com.aydar.tt_cm.featurewebview.di.featureWebViewModule
@@ -11,7 +11,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class App : Application() {
+class App : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()

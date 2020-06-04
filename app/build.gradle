@@ -34,7 +34,6 @@ android {
 
         manifestPlaceholders = [
                 onesignal_app_id               : '0df58091-bb82-4cd1-92a5-dcfe781db686',
-                // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
     }
@@ -44,10 +43,12 @@ android {
             buildConfigField "String", "APP_METRICA_APP_KEY", "64dd2e2b-f02a-462f-95f0-cf3086a5d93c"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            multiDexKeepFile file('multidex-config.txt')
         }
 
         debug {
             buildConfigField "String", "APP_METRICA_APP_KEY", '"64dd2e2b-f02a-462f-95f0-cf3086a5d93c"'
+            multiDexKeepFile file('multidex-config.txt')
         }
     }
 
@@ -87,4 +88,7 @@ dependencies {
     implementation 'com.android.installreferrer:installreferrer:1.1.2'
 
     implementation 'com.android.support:multidex:1.0.3'
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:3.4.0"
 }

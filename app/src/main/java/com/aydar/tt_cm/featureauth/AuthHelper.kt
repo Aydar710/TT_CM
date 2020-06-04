@@ -39,7 +39,7 @@ class AuthHelper(private val activity: AppCompatActivity) {
         }
     }
 
-    fun checkIsUserSignedIn(): Boolean {
+    fun checkIfUserSignedIn(): Boolean {
         val user = auth.currentUser
         return user != null
     }

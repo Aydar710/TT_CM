@@ -44,7 +44,7 @@ class WebViewActivity : AppCompatActivity() {
             web_view.restoreState(savedInstanceState)
         } else {
             configureWebView()
-            web_view.loadUrl(urls[0])
+            web_view.loadUrl(urls.random())
         }
     }
 
@@ -99,7 +99,11 @@ class WebViewActivity : AppCompatActivity() {
     private fun getUserLink(userHasLink: (String?) -> Unit) {
         firebaseUser?.uid?.let { viewModel.getUser(it) }
         viewModel.userLiveData.observe(this, Observer {
-            userHasLink.invoke(it.link)
+            if (it?.link != null){
+                userHasLink.invoke(it.link)
+            }else{
+                userHasLink.invoke(null)
+            }
         })
     }
 
